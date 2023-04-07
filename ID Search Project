@@ -1,0 +1,77 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+
+    //                         **  ID Search Project  **
+    map <string, int> list;
+    string name1;
+    int select;
+
+    cout << "Enter your name : " << endl;
+    while(cin >> name1){
+      if (name1 == "Admin"){                  // Admin Options
+          cout << endl;
+          cout << "1 - Add Member" << endl;
+          cout << "2 - Delete Member" << endl;
+          cout << "3 - Modify Member" << endl;
+          cout << "4 - Number of members" << endl;
+          cout << "5 - print the member list" << endl;
+          cin >> select;
+          
+          if (select == 1){                    // Add new member
+              cout << endl;
+              cout << "Type the name and id you want to add" << endl;
+              string add_name;
+              int add_id;
+              cin >> add_name >> add_id;
+               list.insert({add_name, add_id});
+          }
+
+          else if (select == 2){               // Delete member
+              cout << endl;
+              cout << "Type the name you want to delete" << endl;
+              string delete_member;
+              cin >> delete_member;
+              list.erase(delete_member);
+          }
+
+          else if (select == 3){               // Edit member
+              cout << endl;
+              cout << "Type the name and id you want to edit" << endl;
+               string edit_member;
+              int edit_id;
+              cin >> edit_member >> edit_id;
+              list[edit_member] = edit_id;
+          }
+
+          else if (select == 4){               // Number of member
+              cout << endl;
+              cout << "Number of members is : " << list.size() << endl;
+          }
+
+          else if (select == 5){               // List of member
+              cout << endl;
+              cout << "This is a list of member : " << endl;
+              for (auto it: list){
+                  cout << "Name : " << it.first << " - ID : " << it.second << endl;
+              }
+          }
+      }
+
+      else if (name1 != "Admin"){
+          if(list.find(name1)!= list.end()){   // ID is :
+              cout << endl;
+              cout << "Your ID is : " << list[name1] << endl;
+          }
+
+          else{                                // Not found member
+              cout << endl;
+              cout << name1 <<" : is not found or not added, Please try again later" << endl;
+          }
+      }
+      cout << endl;
+      cout << "Enter your name : " << endl;
+  }
+
+return 0;}
